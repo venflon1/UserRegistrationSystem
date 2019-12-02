@@ -34,3 +34,4 @@ target
 .project
 HELP
 .mvn
+/logging
