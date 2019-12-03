@@ -1,5 +1,6 @@
 app.controller('registerUserController', function($scope, $http, $location, $route) {
 	$scope.submitUserForm = function() {
+		console.log("inseriscimelo!!!!");
 		$http({
 				method : 'POST',
 				url : 'http://localhost:8080/api/user/',
@@ -18,6 +19,7 @@ app.controller('registerUserController', function($scope, $http, $location, $rou
 });
 
 app.controller('listUserController', function($scope, $http, $location, $route) {
+	console.log("listamelo!!!!!");
 	$http({
 		method : 'GET',
 		url : 'http://localhost:8080/api/user/'
@@ -30,11 +32,12 @@ app.controller('listUserController', function($scope, $http, $location, $route) 
 	}
 	
 	$scope.deleteUser = function(userId) {
+		console.log("delete!!!!!");
 		$http({
 			method : 'DELETE',
 			url : 'http://localhost:8080/api/user/' + userId
 		}).then(function(response) {
-				$location.path("/list-allusers");
+				$location.path("/list-all-users");
 				$route.reload();
 			});
 		}
@@ -51,6 +54,7 @@ app.controller('usersDetailsController',function($scope, $http, $location, $rout
 	});
 	
 	$scope.submitUserForm = function() {
+		
 			$http({
 					method : 'POST',
 					url : 'http://localhost:8080/api/user/',
@@ -60,8 +64,7 @@ app.controller('usersDetailsController',function($scope, $http, $location, $rout
 						$route.reload();
 						},	
 						function(errResponse) {
-							$scope.errorMessage = "Error while
-								updating User - Error Message: '"
+							$scope.errorMessage = "Error2 while updating User - Error Message: '"
 									+ errResponse.data.
 									errorMessage;
 						});

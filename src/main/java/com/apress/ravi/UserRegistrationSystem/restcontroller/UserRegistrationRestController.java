@@ -55,7 +55,7 @@ public class UserRegistrationRestController {
 	}
 	
 	//@RequestMapping(value="/{id}" method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
-	@GetMapping(value="/{id}",  consumes=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDTO> retrieveUserById(@PathVariable final long id){
 		// retrieve user by db
 		UserDTO body = this.userJpaRepository.findById(id);
@@ -87,7 +87,7 @@ public class UserRegistrationRestController {
 	}
 	
 	//@RequestMapping(value="/{id}" method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	@DeleteMapping(value="/{id}",  consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDTO> deleteUserById(@PathVariable final long id){
 		
 		// retrieve user by db
