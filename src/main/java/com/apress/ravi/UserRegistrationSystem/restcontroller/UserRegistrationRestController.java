@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,7 @@ public class UserRegistrationRestController {
 	
 	//@RequestMapping(value="/" method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@PostMapping(value="/",  consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<UserDTO> createUser(@RequestBody final UserDTO user){
 		
 		// save user that pass on request entire object
@@ -88,6 +90,7 @@ public class UserRegistrationRestController {
 	
 	//@RequestMapping(value="/{id}" method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@DeleteMapping(value="/{id}",  produces=MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<UserDTO> deleteUserById(@PathVariable final long id){
 		
 		// retrieve user by db
